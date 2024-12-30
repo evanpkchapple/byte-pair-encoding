@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple BPE Training & Tokenization Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Simple BPE Training & Tokenization Demo</h1>
+
+  <label for="trainFileSelect">Choose training text:</label>
+  <select id="trainFileSelect" onchange="trainTokenizer()">
+    <option value="data/A_Strange_Occurence_at_Owl_Creek_Bridge.txt">A Strange Occurence at Owl Creek Bridge</option>
+    <option value="data/Canada_Wiki.txt">Wikipedia Page of Canada</option>
+    <option value="data/US_Constitution.txt">The United States' Constitution</option>
+  </select>
+
+  <br><br>
+
+  <label class="slider-label" for="bpeSlider">Apply BPE merges:</label>
+  <input
+    type="range"
+    id="bpeSlider"
+    min="0"
+    max="200"
+    step="1"
+    value="10"
+    oninput="updateSliderValue(); tokenizeInput()"
+  />
+  <span id="sliderValue">10</span> / <span id="maxMerges">?</span> possible
+
+  <br><br>
+
+  <label for="inputText">Text to tokenize:</label><br>
+  <textarea
+    id="inputText"
+    rows="5"
+    cols="60"
+    oninput="tokenizeInput()"
+  ></textarea>
+
+  <h3>Tokenized Output:</h3>
+  <div id="tokenizedOutput"></div>
+
+  <script src="bpe.js"></script>
+</body>
+</html>
